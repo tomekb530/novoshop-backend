@@ -13,11 +13,13 @@ class EnsureRole
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, string $role): Response
+    public function handle(Request $request, Closure $next, ...$roles): Response
     {
-        if($request->user()->hasRole($role)){
-            return $next($request);
+        foreach($roles as $role){
+            if ($request->user()->hasRole($role)){
+                return $next($request);
+            }
         }
-        return response('Unauthorized', 403);
+        return response()->json(['message' => 'No access'], 403);
     }
 }

@@ -21,6 +21,11 @@ class RegisterTest extends TestCase
             'email' => 'test@test.com',
             'password' => 'password',
             'password_confirmation' => 'password',
+            'rodo_accepted' => true,
+            'city' => 'City',
+            'street' => 'Street',
+            'zip_code' => '00-000',
+            'phone_number' => '+48123456789',
         ]);
 
         $response->assertStatus(201);

@@ -28,7 +28,7 @@ class CreateNewUser implements CreatesNewUsers
                 'max:255',
                 Rule::unique(User::class),
             ],
-            'rodo_accepted' => ['required', 'boolean', 'true'],
+            'rodo_accepted' => ['required', 'boolean', 'accepted:true'],
             'city' => ['required', 'string', 'max:255'],
             'street' => ['required', 'string', 'max:255'],
             'zip_code' => ['required', 'string', 'max:255'],

@@ -23,6 +23,11 @@ class LoginTest extends TestCase
         UserFactory::new()->create([
             'email' => 'test@test.com',
             'password' => 'password',
+            'role' => 'user',
+            'city' => 'City',
+            'street' => 'Street',
+            'zip_code' => '00-000',
+            'phone_number' => '+48123456789',
         ]);
     }
 

@@ -25,6 +25,11 @@ class UserManagementTest extends TestCase
             'email' => 'test@testadmin.com',
             'password' => 'password',
             'role' => 'admin',
+            'city' => 'City',
+            'street' => 'Street',
+            'zip_code' => '00-000',
+            'phone_number' => '+48123456789',
+            'rodo_accepted' => true,
         ]);
 
 
@@ -68,6 +73,11 @@ class UserManagementTest extends TestCase
             'password' => 'password',
             'role' => 'user',
             'confirm_password' => 'password',
+            'city' => 'City',
+            'street' => 'Street',
+            'zip_code' => '00-000',
+            'phone_number' => '+48123456789',
+            'rodo_accepted' => true,
         ]);
 
         $response->assertStatus(201);
@@ -85,6 +95,11 @@ class UserManagementTest extends TestCase
             'password' => 'password',
             'role' => 'user',
             'confirm_password' => 'password',
+            'city' => 'City',
+            'street' => 'Street',
+            'zip_code' => '00-000',
+            'phone_number' => '+48123456789',
+            'rodo_accepted' => true,
         ]);
 
         $response->assertStatus(201);
@@ -108,6 +123,11 @@ class UserManagementTest extends TestCase
             'password' => 'password',
             'role' => 'user',
             'confirm_password' => 'password',
+            'city' => 'City',
+            'street' => 'Street',
+            'zip_code' => '00-000',
+            'phone_number' => '+48123456789',
+            'rodo_accepted' => true,
         ]);
 
         $response->assertStatus(201);
@@ -122,6 +142,12 @@ class UserManagementTest extends TestCase
             'email' => 'test@testnew.com',
             'password' => 'password',
             'role' => 'user',
+            'confirm_password' => 'password',
+            'city' => 'City',
+            'street' => 'Street',
+            'zip_code' => '00-000',
+            'phone_number' => '+48123456789',
+            'rodo_accepted' => true,
         ]);
 
         $response->assertStatus(200);
@@ -139,6 +165,11 @@ class UserManagementTest extends TestCase
             'password' => 'password',
             'role' => 'user',
             'confirm_password' => 'password',
+            'city' => 'City',
+            'street' => 'Street',
+            'zip_code' => '00-000',
+            'phone_number' => '+48123456789',
+            'rodo_accepted' => true,
         ]);
 
         $response->assertStatus(201);

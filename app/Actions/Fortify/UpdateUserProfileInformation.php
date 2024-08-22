@@ -27,6 +27,11 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'max:255',
                 Rule::unique('users')->ignore($user->id),
             ],
+
+            'zip_code' => ['required', 'string', 'max:255'],
+            'city' => ['required', 'string', 'max:255'],
+            'street' => ['required', 'string', 'max:255'],
+            'phone_number' => ['required', 'phone:PL,INTERNATIONAL'],
         ])->validateWithBag('updateProfileInformation');
 
         if ($input['email'] !== $user->email &&

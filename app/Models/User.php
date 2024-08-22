@@ -21,6 +21,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'rodo_accepted',
+        'city',
+        'street',
+        'zip_code',
+        'phone_number',
         'role',
     ];
 
@@ -49,6 +54,6 @@ class User extends Authenticatable
 
     function hasRole(string $role)
     {
-        return $this->role === $role || $this->role === 'superadmin';
+        return $this->role === $role || $this->role === 'master';
     }
 }

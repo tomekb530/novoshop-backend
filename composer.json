@@ -6,6 +6,8 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "dompdf/dompdf": "^3.0",
+        "laravel/cashier": "^15.4",
         "laravel/fortify": "^1.23",
         "laravel/framework": "^11.9",
         "laravel/sanctum": "^4.0",

@@ -32,7 +32,7 @@ class Payment extends Model
         $this->method = $method;
         $this->description = $description;
         $this->currency = 'pln';
-        $this->status = 'pending';
+        $this->status = 'unpaid';
         $this->save();
     }
 

@@ -15,33 +15,10 @@ Route::get('/users/{user}', [UserController::class, 'show'])->middleware('auth:s
 Route::post('/users/{user}', [UserController::class, 'update'])->middleware('auth:sanctum', 'verified', 'role:master,admin');
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->middleware('auth:sanctum', 'verified', 'role:master,admin');
 
+Route::get('/payment/all', [PaymentController::class, 'show'])->middleware('auth:sanctum', 'verified', 'role:master,admin');
 
-Route::middleware('auth:sanctum', 'verified')->get('/payment/new', function (Request $request) {
-    $controller = new PaymentController();
-    return $controller->pay($request);
-});
-
-Route::middleware('auth:sanctum', 'verified')->get('/payment/status', function (Request $request) {
-    $controller = new PaymentController();
-    return $controller->status($request);
-});
-
-Route::middleware('auth:sanctum', 'verified')->get('/payment/info', function (Request $request) {
-    $controller = new PaymentController();
-    return $controller->info($request);
-});
-
-Route::middleware('auth:sanctum', 'verified')->get('/payment/refund', function (Request $request) {
-    $controller = new PaymentController();
-    return $controller->refund($request);
-});
-
-Route::middleware('auth:sanctum', 'verified')->get('/payment/history', function (Request $request) {
-    $controller = new PaymentController();
-    return $controller->history($request);
-});
-
-Route::middleware('auth:sanctum', 'verified', 'role:master,admin')->get('/payment/all', function (Request $request) {
-    $controller = new PaymentController();
-    return $controller->show($request);
-});
+Route::get('/payment/new', [PaymentController::class, 'pay'])->middleware('auth:sanctum', 'verified');
+Route::get('/payment/status', [PaymentController::class, 'status'])->middleware('auth:sanctum', 'verified');
+Route::get('/payment/info', [PaymentController::class, 'info'])->middleware('auth:sanctum', 'verified');
+Route::get('/payment/refund', [PaymentController::class, 'refund'])->middleware('auth:sanctum', 'verified');
+Route::get('/payment/history', [PaymentController::class, 'history'])->middleware('auth:sanctum', 'verified');

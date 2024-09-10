@@ -12,9 +12,8 @@ class PaymentController extends Controller
     public function pay(Request $request)
     {
         $payment = new Payment();
-        $payRequest = $request->user()->checkoutCharge($request->amount, "test");
-        $payment->makePayment($request->user(), $request->amount, $payRequest->id, "test");
-        //json url and id
+        $payRequest = $request->user()->checkoutCharge($request->amount, $request->description);
+        $payment->makePayment($request->user(), $request->amount, $payRequest->id, $request->description);
         return response()->json([
             'id' => $payment->id,
             'stripe_payment_id' => $payRequest->id,
@@ -48,12 +47,19 @@ class PaymentController extends Controller
 
     public function refund(Request $request)
     {
-        return $request->user()->refund($request->amount);
+        $payment = Payment::find($request->id);
+        if (!$payment) {
+            return response()->json([
+                'error' => 'Payment not found'
+            ], 404);
+        }
+        return $request->user()->refund($payment->stripe_payment_id);
     }
 
     public function history(Request $request)
     {
-        return $request->user()->history();
+        $payments = Payment::where('user_id', $request->user()->id)->get();
+        return response()->json($payments);
     }
 
     public function info(Request $request)
@@ -65,5 +71,11 @@ class PaymentController extends Controller
             ], 404);
         }
         return response()->json($payment);
+    }
+
+    public function show(Request $request)
+    {
+        $payments = Payment::all();
+        return response()->json($payments);
     }
 }

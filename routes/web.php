@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VerifyEmailController;
 Route::get('/', function () {
     return "NovoShop Backend";
-});
+})->name('home');
 
 Route::get('/reset-password/{token}', function () {
     return "NovoShop Backend";

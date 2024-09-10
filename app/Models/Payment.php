@@ -35,4 +35,9 @@ class Payment extends Model
         $this->status = 'pending';
         $this->save();
     }
+
+    public function checkStatus()
+    {
+        return $this->status;
+    }
 }

@@ -80,4 +80,23 @@ class PaymentController extends Controller
         $payments = Payment::all();
         return response()->json($payments);
     }
+
+
+    public function myInvoice(Request $request)
+    {
+        $invoices = $request->user()->invoices();
+        return response()->json($invoices);
+    }
+
+    public function invoice(Request $request)
+    {
+        $invoice = $request->user()->downloadInvoice($request->invoice);
+        return response()->json($invoice);
+    }
+
+    public function allInvoice(Request $request)
+    {
+        $invoices = Cashier::stripe()->invoices->all();
+        return response()->json($invoices);
+    }
 }

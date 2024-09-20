@@ -22,3 +22,7 @@ Route::get('/payment/status', [PaymentController::class, 'status'])->middleware(
 Route::get('/payment/info', [PaymentController::class, 'info'])->middleware('auth:sanctum', 'verified');
 Route::get('/payment/refund', [PaymentController::class, 'refund'])->middleware('auth:sanctum', 'verified');
 Route::get('/payment/history', [PaymentController::class, 'history'])->middleware('auth:sanctum', 'verified');
+
+Route::get('/invoice', [PaymentController::class, 'invoice'])->middleware('auth:sanctum', 'verified');
+Route::get('/invoice/my', [PaymentController::class, 'myInvoice'])->middleware('auth:sanctum', 'verified');
+Route::get('/invoice/all', [PaymentController::class, 'allInvoice'])->middleware('auth:sanctum', 'verified', 'role:master,admin');

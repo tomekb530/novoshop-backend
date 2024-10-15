@@ -17,7 +17,7 @@ Route::delete('/users/{user}', [UserController::class, 'destroy'])->middleware('
 
 Route::get('/payment/all', [PaymentController::class, 'show'])->middleware('auth:sanctum', 'verified', 'role:master,admin');
 
-Route::get('/payment/new', [PaymentController::class, 'pay'])->middleware('auth:sanctum', 'verified');
+Route::post('/payment/new', [PaymentController::class, 'pay'])->middleware('auth:sanctum', 'verified');
 Route::get('/payment/status', [PaymentController::class, 'status'])->middleware('auth:sanctum', 'verified');
 Route::get('/payment/info', [PaymentController::class, 'info'])->middleware('auth:sanctum', 'verified');
 Route::get('/payment/refund', [PaymentController::class, 'refund'])->middleware('auth:sanctum', 'verified');
